@@ -10,6 +10,7 @@ import Astonmartin from '../images/astonmartin.svg';
 import Haas from '../images/haas.png';
 import Williams from '../images/williams.png';
 import Alfa from '../images/alfa.svg';
+import { Link } from 'react-router-dom';
 
 const DriverCard = ({ details }) => {
   const getTeamLogo = () => {

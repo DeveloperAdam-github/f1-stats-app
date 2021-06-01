@@ -4,6 +4,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import RaceCard from '../components/RaceCard';
 import axios from 'axios';
 import { renderableCircuits } from '../circuits';
+import StarterRaceCard from '../components/StaterRaceCard';
 
 const RaceCalendar = () => {
   const [trackInfo, setTrackInfo] = useState(null);
@@ -23,41 +24,89 @@ const RaceCalendar = () => {
 
     getTrackData();
   }, []);
+
+  const todaysDate = Date.now();
+
+  const dates = [
+    trackInfo?.MRData?.RaceTable?.Races[0]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[1]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[2]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[3]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[4]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[5]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[6]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[7]?.date,
+    trackInfo?.MRData?.RaceTable?.Races[8]?.date,
+  ];
+
+  const [closest] = dates.sort((a, b) => {
+    const [aDate, bDate] = [a, b].map((d) =>
+      Math.abs(new Date(d) - todaysDate)
+    );
+
+    return aDate - bDate;
+  });
+
+  console.log(closest, 'closest tracks');
+
+  const getNextTrack = () => {
+    switch (closest) {
+      case '2021-03-28':
+        return 'Bahrain Grand Prix';
+      case '2021-06-06':
+        return 'Azerbaijan Grand Prix';
+      case '2021-06-20':
+        return 'French Grand Prix';
+      default:
+        break;
+    }
+  };
+
+  const getFlag = () => {
+    switch (closest) {
+      case '2021-03-28':
+        return 'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png.transform/2col-retina/image.png';
+      case '2021-06-06':
+        return 'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png.transform/2col-retina/image.png';
+      case '2021-06-20':
+        return 'French Grand Prix';
+      default:
+        break;
+    }
+  };
   return (
     <RaceCalendarContainer>
-      <StarterCard>
-        <CardTitle>F1 2021 Schedule</CardTitle>
-        <p>2021 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR</p>
-        <NextRace>
-          <Square>
-            <Icon />
-          </Square>
-          <h4>AZERBAIJAN 2021 </h4>
-          <Flag
-            src='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png.transform/2col-retina/image.png'
-            alt=''
-          />
-        </NextRace>
-      </StarterCard>
       {trackInfo ? (
-        <CardContainer>
-          {Object.keys(
-            renderableCircuits,
-            trackInfo.MRData.RaceTable.Races
-          ).map((key) => (
-            <RaceCard
-              key={key}
-              render={renderableCircuits[key]}
-              details={trackInfo.MRData.RaceTable.Races[key]}
-            />
-          ))}
-          {/* {Object.keys(trackInfo.MRData.RaceTable.Races).map((key) => (
+        <>
+          <StarterCard>
+            <CardTitle>F1 2021 Schedule</CardTitle>
+            <p>2021 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR</p>
+            <NextRace>
+              <Square>
+                <Icon />
+              </Square>
+              <h4>{getNextTrack()}</h4>
+              <Flag src={getFlag()} alt='' />
+            </NextRace>
+          </StarterCard>
+          <CardContainer>
+            {Object.keys(
+              renderableCircuits,
+              trackInfo.MRData.RaceTable.Races
+            ).map((key) => (
+              <RaceCard
+                key={key}
+                render={renderableCircuits[key]}
+                details={trackInfo.MRData.RaceTable.Races[key]}
+              />
+            ))}
+            {/* {Object.keys(trackInfo.MRData.RaceTable.Races).map((key) => (
             <RaceCard
               key={key}
               details={trackInfo.MRData.RaceTable.Races[key]}
             />
           ))} */}
-          {/* <RaceCard
+            {/* <RaceCard
           date='28th March'
           flag='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png.transform/2col-retina/image.png'
           raceName='Bahrain'
@@ -92,7 +141,8 @@ const RaceCalendar = () => {
           desc='Formula 1 Grand Prix De Monaco 2021'
           track='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monte%20Carlo%20carbon.png.transform/8col-retina/image.png'
         /> */}
-        </CardContainer>
+          </CardContainer>
+        </>
       ) : (
         <h1>loading</h1>
       )}

@@ -17,7 +17,8 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
   return (
     <CardContainer>
       <CardTitle>
-        {details.date} <Flag src={render.flag} />
+        {details.date.substring(0, 10).split('-').reverse().join('-')}{' '}
+        <Flag src={render.flag} />
       </CardTitle>
       <hr />
       <CardMiddle>
@@ -28,7 +29,7 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
       </CardMiddle>
       <hr />
       <ImageContainer>
-        <TrackImg src={track} />
+        <TrackImg src={render.track} />
       </ImageContainer>
     </CardContainer>
   );

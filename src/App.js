@@ -4,8 +4,9 @@ import FooterNav from './components/FooterNav';
 import DriversPage from './pages/DriversPage';
 import ConstructorsPage from './pages/ConstructorsPage';
 import RaceCalendar from './pages/RaceCalendar';
+import TeamPage from './pages/TeamPage';
 
-function App() {
+function App({ details }) {
   return (
     <div className='App'>
       <Router>
@@ -14,6 +15,7 @@ function App() {
           <Route path='/standings' component={DriversPage} exact />
           <Route path='/constructors' component={ConstructorsPage} exact />
           <Route path='/racecalendar' component={RaceCalendar} />
+          <Route path='/:id' component={TeamPage} />
         </Switch>
         <FooterNav />
       </Router>

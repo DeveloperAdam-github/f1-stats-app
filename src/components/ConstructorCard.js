@@ -10,6 +10,7 @@ import Astonmartin from '../images/astonmartin.svg';
 import Haas from '../images/haas.png';
 import Williams from '../images/williams.png';
 import Alfa from '../images/alfa.svg';
+import { Link } from 'react-router-dom';
 
 const ConstructorCard = ({
   team,
@@ -131,6 +132,10 @@ const ConstructorCard = ({
 
   return (
     <ConstructorCardContainer team={details.Constructor.constructorId}>
+      {/* <Link
+        to={`/${details.Constructor.constructorId}`}
+        style={{ textDecoration: 'none', color: 'whitesmoke' }}
+      > */}
       <CardTitleContainer>
         <CardHeader>
           <TeamPosition>{details.position}</TeamPosition>
@@ -161,6 +166,7 @@ const ConstructorCard = ({
           <TeamCar src={getTeamCar()} />
         </TeamCarContainer>
       </CardTitleContainer>
+      {/* </Link> */}
     </ConstructorCardContainer>
   );
 };
