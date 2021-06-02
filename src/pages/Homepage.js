@@ -1,9 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Timeline } from 'react-twitter-widgets';
 
 const Homepage = () => {
   return (
     <HomepageContainer>
+      {/* <Timeline
+        dataSource={{
+          sourceType: 'profile',
+          screenName: 'F1',
+        }}
+        options={{
+          height: '400',
+          width: '400',
+        }}
+      /> */}
       <Tweets>
         <a
           class='twitter-timeline'
