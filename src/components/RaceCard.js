@@ -72,7 +72,7 @@ const CardTitle = styled.h2`
 `;
 
 const Flag = styled.img`
-  height: 80;
+  /* height: 80; */
   width: 3rem;
   border-radius: 5px;
   margin-right: 5px;
@@ -98,4 +98,5 @@ const ImageContainer = styled.div`
 
 const TrackImg = styled.img`
   width: 40%;
+  height: 40%;
 `;
