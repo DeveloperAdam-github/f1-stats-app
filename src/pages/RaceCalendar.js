@@ -4,7 +4,6 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import RaceCard from '../components/RaceCard';
 import axios from 'axios';
 import { renderableCircuits } from '../circuits';
-import StarterRaceCard from '../components/StaterRaceCard';
 
 const RaceCalendar = () => {
   const [trackInfo, setTrackInfo] = useState(null);
@@ -59,16 +58,50 @@ const RaceCalendar = () => {
     switch (closest) {
       case '2021-03-28':
         return 'Bahrain Grand Prix';
+      case '2021-04-18':
+        return 'Emilia-Romagna Grand Prix';
+      case '2021-05-02':
+        return 'Portugal Grand Prix';
+      case '2021-05-09':
+        return 'Spain Grand Prix';
+      case '2021-05-23':
+        return 'Monaco Grand Prix';
       case '2021-06-06':
         return 'Azerbaijan Grand Prix';
       case '2021-06-20':
-        return 'French Grand Prix';
-      case '2021-06-20':
-        return 'French Grand Prix';
-      case '2021-07-04':
-        return 'RedBull Ring';
+        return 'France Grand Prix';
+      case '2021-06-27':
+        return 'Styria Grand Prix';
+      case ' 2021-07-04':
+        return 'Austria Grand Prix';
+      case ' 2021-07-18':
+        return 'Great Britain Grand Prix';
+      case ' 2021-08-01':
+        return 'Hungary Grand Prix';
+      case ' 2021-08-29':
+        return 'Belgium Grand Prix';
+      case ' 2021-08-29':
+        return 'Netherlands Grand Prix';
       case ' 2021-09-12':
-        return 'yes bro';
+        return 'Italy Grand Prix';
+      case ' 2021-09-26':
+        return 'Russia Grand Prix';
+      case ' 2021-10-01':
+        return 'Singapore Grand Prix';
+      case ' 2021-10-10':
+        return 'Japan Grand Prix';
+      case ' 2021-10-24':
+        return 'United States Grand Prix';
+      case ' 2021-10-31':
+        return 'Mexico Grand Prix';
+      case ' 2021-11-05':
+        return 'Brazilian Grand Prix';
+      case ' 2021-11-21':
+        return 'Australian Grand Prix';
+      case ' 2021-12-05':
+        return 'Saudi Arabia Grand Prix';
+      case ' 2021-12-12':
+        return 'Abu Dhabi Grand Prix';
       default:
         break;
     }
