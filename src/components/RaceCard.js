@@ -74,6 +74,7 @@ const CardTitle = styled.h2`
 const Flag = styled.img`
   /* height: 80; */
   width: 3rem;
+  height: 2rem;
   border-radius: 5px;
   margin-right: 5px;
 `;
