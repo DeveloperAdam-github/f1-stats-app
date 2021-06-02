@@ -17,6 +17,11 @@ const RaceCalendar = () => {
         );
         setTrackInfo(response.data);
         console.log(response.data);
+        // Object.entries(trackInfo?.MRData?.RaceTable?.Races).forEach(
+        //   ([key, value]) => {
+        //     console.log(key, value.date);
+        //   }
+        // );
       } catch (err) {
         console.error(err.message);
       }
@@ -25,25 +30,26 @@ const RaceCalendar = () => {
     getTrackData();
   }, []);
 
-  const todaysDate = Date.now();
+  const dates = renderableCircuits.map((circuit) => circuit.date);
 
-  const dates = [
-    trackInfo?.MRData?.RaceTable?.Races[0]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[1]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[2]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[3]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[4]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[5]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[6]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[7]?.date,
-    trackInfo?.MRData?.RaceTable?.Races[8]?.date,
-  ];
+  const todaysDate = Date.now();
+  // const dates = [
+  //   trackInfo?.MRData?.RaceTable?.Races[0]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[1]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[2]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[3]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[4]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[5]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[6]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[7]?.date,
+  //   trackInfo?.MRData?.RaceTable?.Races[8]?.date,
+  // ];
 
   const [closest] = dates.sort((a, b) => {
     const [aDate, bDate] = [a, b].map((d) =>
       Math.abs(new Date(d) - todaysDate)
     );
-
+    // console.log(aDate, bDate, 'the dates');
     return aDate - bDate;
   });
 
@@ -57,6 +63,12 @@ const RaceCalendar = () => {
         return 'Azerbaijan Grand Prix';
       case '2021-06-20':
         return 'French Grand Prix';
+      case '2021-06-20':
+        return 'French Grand Prix';
+      case '2021-07-04':
+        return 'RedBull Ring';
+      case ' 2021-09-12':
+        return 'yes bro';
       default:
         break;
     }
@@ -68,8 +80,6 @@ const RaceCalendar = () => {
         return 'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png.transform/2col-retina/image.png';
       case '2021-06-06':
         return 'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png.transform/2col-retina/image.png';
-      case '2021-06-20':
-        return 'French Grand Prix';
       default:
         break;
     }

@@ -1,33 +1,55 @@
 const circuits = [
-  { name: 'Formula 1 Gulf Air Bahrain Grand Prix 2021', country: 'bahrain' },
+  {
+    name: 'Formula 1 Gulf Air Bahrain Grand Prix 2021',
+    country: 'bahrain',
+    date: '2021-03-28',
+  },
   {
     name: 'Formula 1 Pirelli Gran Premio Del Made In Italy E Dell emilia Romagna 2021',
     country: 'italy',
+    date: '2021-04-18',
   },
   {
     name: 'Formula 1 Heineken Grande Prémio De Portugal 2021',
     country: 'portugal',
+    date: '2021-05-02',
   },
-  { name: 'Formula 1 Aramco Gran Premio De España 2021', country: 'spain' },
-  { name: 'Monaco', country: 'monaco' },
-  { name: 'Azerbaijan', country: 'azerbaijan' },
-  { name: 'France', country: 'france' },
-  { name: 'Formula 1 Grosser Preis Der Steiermark 2021', country: 'austria' },
-  { name: 'Formula 1 Grosser Preis Von Österreich 2021', country: 'austria-2' },
-  { name: 'Great Britain', country: 'great-britain' },
-  { name: 'Hungary', country: 'hungary' },
-  { name: 'Belgium', country: 'belgium' },
-  { name: 'Netherlands', country: 'netherlands' },
-  { name: 'Formula 1 Heineken Gran Premio D’italia 2021', country: 'italy-2' },
-  { name: 'Russia', country: 'russia' },
-  { name: 'Singapore', country: 'singapore' },
-  { name: 'Japan', country: 'japan' },
-  { name: 'United States', country: 'united states' },
-  { name: 'Mexico', country: 'mexico' },
-  { name: 'Brazil', country: 'brazil' },
-  { name: 'Australia', country: 'australia' },
-  { name: 'Saudi Arabia', country: 'saudi arabia' },
-  { name: 'Abu Dhabi', country: 'uae' },
+  {
+    name: 'Formula 1 Aramco Gran Premio De España 2021',
+    country: 'spain',
+    date: '2021-05-09',
+  },
+  { name: 'Monaco', country: 'monaco', date: '2021-05-23' },
+  { name: 'Azerbaijan', country: 'azerbaijan', date: '2021-06-06' },
+  { name: 'France', country: 'france', date: '2021-06-20' },
+  {
+    name: 'Formula 1 Grosser Preis Der Steiermark 2021',
+    country: 'austria',
+    date: '2021-06-27',
+  },
+  {
+    name: 'Formula 1 Grosser Preis Von Österreich 2021',
+    country: 'austria-2',
+    date: '2021-07-04',
+  },
+  { name: 'Great Britain', country: 'great-britain', date: '2021-07-18' },
+  { name: 'Hungary', country: 'hungary', date: '2021-08-01' },
+  { name: 'Belgium', country: 'belgium', date: '2021-08-29' },
+  { name: 'Netherlands', country: 'netherlands', date: '2021-09-05' },
+  {
+    name: 'Formula 1 Heineken Gran Premio D’italia 2021',
+    country: 'italy-2',
+    date: '2021-09-12',
+  },
+  { name: 'Russia', country: 'russia', date: '2021-09-26' },
+  { name: 'Singapore', country: 'singapore', date: '2021-10-03' },
+  { name: 'Japan', country: 'japan', date: '2021-10-10' },
+  { name: 'United States', country: 'united states', date: '2021-10-24' },
+  { name: 'Mexico', country: 'mexico', date: '2021-10-31' },
+  { name: 'Brazil', country: 'brazil', date: '2021-11-07' },
+  { name: 'Australia', country: 'australia', date: '2021-11-21' },
+  { name: 'Saudi Arabia', country: 'saudi arabia', date: '2021-12-05' },
+  { name: 'Abu Dhabi', country: 'uae', date: '2021-12-12' },
 ];
 
 const capitalise = (str) => {
@@ -38,6 +60,7 @@ export const renderableCircuits = circuits.map((circuit) => {
   const newCircuit = {
     name: capitalise(circuit.name),
     country: capitalise(circuit.country),
+    date: circuit.date,
   };
 
   switch (circuit.country) {
