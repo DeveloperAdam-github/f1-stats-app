@@ -21,7 +21,7 @@ const DriversPage = () => {
     async function getDriverData() {
       try {
         const response = await axios.get(
-          'http://ergast.com/api/f1/current/driverStandings.json'
+          'https://ergast.com/api/f1/current/driverStandings.json'
         );
         setDriverInfo(response.data);
         console.log(response.data);

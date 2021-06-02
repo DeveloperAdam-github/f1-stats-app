@@ -21,7 +21,7 @@ const ConstructorsPage = () => {
     async function getTeamData() {
       try {
         const response = await axios.get(
-          'http://ergast.com/api/f1/current/constructorStandings.json'
+          'https://ergast.com/api/f1/current/constructorStandings.json'
         );
         setTeamInfo(response.data);
         console.log(response.data);
