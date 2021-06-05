@@ -7,24 +7,11 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CircuitHeader from '../components/CircuitComponents/CircuitHeader';
 
 const CircuitPage = (details) => {
-  const [trackInfo, setTrackInfo] = useState(null);
-
-  useEffect(() => {
-    async function getTrackData() {
-      try {
-        setTrackInfo(details.location.trackDetails);
-      } catch (err) {
-        console.error(err.message);
-      }
-    }
-
-    getTrackData();
-  }, []);
   return (
     <>
-      {trackInfo ? (
+      {details.location.trackDetails ? (
         <CircuitPageContainer>
-          <CircuitHeader details={trackInfo} />
+          <CircuitHeader details={details.location.trackDetails} />
           {/* <CircuitPageHeader>
         <HeaderTitle>
         <Link to='/racecalendar'>
