@@ -17,7 +17,7 @@ function App() {
           <Route path='/constructors' component={ConstructorsPage} exact />
           <Route path='/racecalendar' component={RaceCalendar} />
           <Route path='/team/:id' component={TeamPage} />
-          <Route path='/circuits/:id' component={CircuitPage} />
+          <Route path='/circuits' component={CircuitPage} />
         </Switch>
         <FooterNav />
       </Router>

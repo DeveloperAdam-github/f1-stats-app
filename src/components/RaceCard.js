@@ -29,7 +29,11 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
     // >
     <CardContainer>
       <Link
-        to={`/circuits/${details.raceName}`}
+        to={{
+            pathname:  `/circuits`,
+            search: `${details.Circuit.circuitId}`,
+            trackDetails: details
+        }}
         style={{ textDecoration: 'none', color: 'whitesmoke' }}
       >
         <CardTitle>
