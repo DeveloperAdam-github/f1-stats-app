@@ -4,20 +4,15 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { Link } from 'react-router-dom';
 import CircuitHeader from '../components/CircuitComponents/CircuitHeader';
 
-const CircuitPage = ({ details }) => {
+const CircuitPage = (details) => {
   const [trackInfo, setTrackInfo] = useState(null);
 
   useEffect(() => {
     async function getTrackData() {
       try {
-        const response = await axios.get(
-          'https://ergast.com/api/f1/current.json'
-        );
-        setTrackInfo(response.data);
-        console.log(response.data);
+        setTrackInfo(details.location.trackDetails);
       } catch (err) {
         console.error(err.message);
       }
@@ -29,7 +24,7 @@ const CircuitPage = ({ details }) => {
     <>
       {trackInfo ? (
         <CircuitPageContainer>
-          <CircuitHeader />
+          <CircuitHeader details={trackInfo} />
           {/* <CircuitPageHeader>
         <HeaderTitle>
         <Link to='/racecalendar'>
