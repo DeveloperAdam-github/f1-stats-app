@@ -1,4 +1,6 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
 import styled from 'styled-components';
 import RedBull from '../images/redbull.svg';
 import Mercedes from '../images/mercedes.svg';
@@ -88,27 +90,33 @@ const DriverCard = ({ details }) => {
   };
 
   return (
-    <DriversCardContainer team={details.Constructors[0].constructorId}>
-      <CardTitleContainer>
-        <TeamLogo src={getTeamLogo()} alt='' width='70px' />
-        <CardTitle>
-          <p>{details.Driver.givenName}</p>
-          <h2>{details.Driver.familyName}</h2>
-          <DriverPoints>
-            {details.points}
-            <small
-              style={{
-                fontSize: '1.5rem',
-                letterSpacing: '-1.2px',
-              }}
-            >
-              points
-            </small>
-          </DriverPoints>
-        </CardTitle>
-        <CardDriver src={getDriversImage()} />
-      </CardTitleContainer>
-    </DriversCardContainer>
+    <motion.div
+      initial={{ y: -2000 }}
+      animate={{ y: 10 }}
+      transition={{ ease: 'easeIn', duration: 0.6 }}
+    >
+      <DriversCardContainer team={details.Constructors[0].constructorId}>
+        <CardTitleContainer>
+          <TeamLogo src={getTeamLogo()} alt='' width='70px' />
+          <CardTitle>
+            <p>{details.Driver.givenName}</p>
+            <h2>{details.Driver.familyName}</h2>
+            <DriverPoints>
+              {details.points}
+              <small
+                style={{
+                  fontSize: '1.5rem',
+                  letterSpacing: '-1.2px',
+                }}
+              >
+                points
+              </small>
+            </DriverPoints>
+          </CardTitle>
+          <CardDriver src={getDriversImage()} />
+        </CardTitleContainer>
+      </DriversCardContainer>
+    </motion.div>
   );
 };
 

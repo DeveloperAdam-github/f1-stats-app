@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import { Link } from 'react-router-dom';
 
 const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
   // const getFlag = () => {
@@ -15,23 +17,39 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
   // };
 
   return (
+    // <motion.div
+    //   initial={{ x: -5000 }}
+    //   animate={{ x: 0 }}
+    //   transition={{
+    //     type: 'spring',
+    //     duration: '1',
+    //     delay: '0.1s',
+    //     delayChildren: '0.5',
+    //   }}
+    // >
     <CardContainer>
-      <CardTitle>
-        {details.date.substring(0, 10).split('-').reverse().join('-')}{' '}
-        <Flag src={render.flag} />
-      </CardTitle>
-      <hr />
-      <CardMiddle>
-        <h4>
-          {details.raceName} <ChevronRightIcon style={{ color: '#730a0B' }} />{' '}
-        </h4>
-        <p>{details.Circuit.circuitName}</p>
-      </CardMiddle>
-      <hr />
-      <ImageContainer>
-        <TrackImg src={render.track} />
-      </ImageContainer>
+      <Link
+        to={`/circuits/${details.raceName}`}
+        style={{ textDecoration: 'none', color: 'whitesmoke' }}
+      >
+        <CardTitle>
+          {details.date.substring(0, 10).split('-').reverse().join('-')}{' '}
+          <Flag src={render.flag} />
+        </CardTitle>
+        <hr />
+        <CardMiddle>
+          <h4>
+            {details.raceName} <ChevronRightIcon style={{ color: '#730a0B' }} />{' '}
+          </h4>
+          <p>{details.Circuit.circuitName}</p>
+        </CardMiddle>
+        <hr />
+        <ImageContainer>
+          <TrackImg src={render.track} />
+        </ImageContainer>
+      </Link>
     </CardContainer>
+    // </motion.div>
   );
 };
 

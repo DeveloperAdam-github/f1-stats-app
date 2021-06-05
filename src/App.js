@@ -5,8 +5,9 @@ import DriversPage from './pages/DriversPage';
 import ConstructorsPage from './pages/ConstructorsPage';
 import RaceCalendar from './pages/RaceCalendar';
 import TeamPage from './pages/TeamPage';
+import CircuitPage from './pages/CircuitPage';
 
-function App({ details }) {
+function App() {
   return (
     <div className='App'>
       <Router>
@@ -15,7 +16,8 @@ function App({ details }) {
           <Route path='/standings' component={DriversPage} exact />
           <Route path='/constructors' component={ConstructorsPage} exact />
           <Route path='/racecalendar' component={RaceCalendar} />
-          <Route path='/:id' component={TeamPage} />
+          <Route path='/team/:id' component={TeamPage} />
+          <Route path='/circuits/:id' component={CircuitPage} />
         </Switch>
         <FooterNav />
       </Router>

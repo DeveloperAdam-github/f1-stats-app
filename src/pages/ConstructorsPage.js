@@ -13,6 +13,7 @@ import Haas from '../images/haas.png';
 import Williams from '../images/williams.png';
 import Alfa from '../images/alfa.svg';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const ConstructorsPage = () => {
   const [teamInfo, setTeamInfo] = useState(null);
@@ -169,7 +170,9 @@ const ConstructorsPage = () => {
           /> */}
           </CardContainer>
         ) : (
-          <h1>heelo, loading</h1>
+          <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
+            <h4 style={{ color: 'white' }}>Loading . . . </h4>
+          </motion.div>
         )}
       </ConstructorContainer>
     </ConstructorStyles>

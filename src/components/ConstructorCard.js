@@ -11,6 +11,7 @@ import Haas from '../images/haas.png';
 import Williams from '../images/williams.png';
 import Alfa from '../images/alfa.svg';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const ConstructorCard = ({
   team,
@@ -131,43 +132,49 @@ const ConstructorCard = ({
   };
 
   return (
-    <ConstructorCardContainer team={details.Constructor.constructorId}>
-      {/* <Link
+    <motion.div
+      initial={{ y: -2000 }}
+      animate={{ y: 10 }}
+      transition={{ ease: 'easeIn', duration: 1 }}
+    >
+      <ConstructorCardContainer team={details.Constructor.constructorId}>
+        {/* <Link
         to={`/${details.Constructor.constructorId}`}
         style={{ textDecoration: 'none', color: 'whitesmoke' }}
       > */}
-      <CardTitleContainer>
-        <CardHeader>
-          <TeamPosition>{details.position}</TeamPosition>
-          <TeamPoints>
-            {details.points}{' '}
-            <span
-              style={{
-                backgroundColor: 'black',
-                fontSize: '1rem',
-                borderRadius: '10px',
-                fontWeight: '900',
-                padding: '3px',
-              }}
-            >
-              PTS
-            </span>
-          </TeamPoints>
-        </CardHeader>
-        <CardMiddle>
-          <TeamName>{details.Constructor.name}</TeamName>
-          <TeamLogo src={getTeamLogo()} />
-        </CardMiddle>
-        <CardBottom>
-          <FirstDriver>{getFirstDriverName()}</FirstDriver>
-          <SecondDriver>{getSecondDriverName()}</SecondDriver>
-        </CardBottom>
-        <TeamCarContainer>
-          <TeamCar src={getTeamCar()} />
-        </TeamCarContainer>
-      </CardTitleContainer>
-      {/* </Link> */}
-    </ConstructorCardContainer>
+        <CardTitleContainer>
+          <CardHeader>
+            <TeamPosition>{details.position}</TeamPosition>
+            <TeamPoints>
+              {details.points}{' '}
+              <span
+                style={{
+                  backgroundColor: 'black',
+                  fontSize: '1rem',
+                  borderRadius: '10px',
+                  fontWeight: '900',
+                  padding: '3px',
+                }}
+              >
+                PTS
+              </span>
+            </TeamPoints>
+          </CardHeader>
+          <CardMiddle>
+            <TeamName>{details.Constructor.name}</TeamName>
+            <TeamLogo src={getTeamLogo()} />
+          </CardMiddle>
+          <CardBottom>
+            <FirstDriver>{getFirstDriverName()}</FirstDriver>
+            <SecondDriver>{getSecondDriverName()}</SecondDriver>
+          </CardBottom>
+          <TeamCarContainer>
+            <TeamCar src={getTeamCar()} />
+          </TeamCarContainer>
+        </CardTitleContainer>
+        {/* </Link> */}
+      </ConstructorCardContainer>
+    </motion.div>
   );
 };
 

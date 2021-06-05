@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import DriverCard from '../components/DriverCard';
+import { motion } from 'framer-motion';
 // import RedBull from '../images/redbull.svg';
 // import Mercedes from '../images/mercedes.svg';
 // import Mclaren from '../images/mclarenn.png';
@@ -480,10 +481,9 @@ const DriversPage = () => {
           </CardContainer>
         ) : (
           <LoadingDiv>
-            <LoadingImage
-              src='https://www.formula1.com/content/dam/fom-website/teams/2021/red-bull-racing.png.transform/4col-retina/image.png'
-              alt=''
-            />
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
+              <h4 style={{ color: 'white' }}>Loading . . . </h4>
+            </motion.div>
           </LoadingDiv>
         )}
       </DriversPageContainer>
