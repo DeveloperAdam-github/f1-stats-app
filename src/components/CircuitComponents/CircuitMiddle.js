@@ -43,9 +43,11 @@ const CircuitMiddle = ({ details }) => {
           </GridDetailsConatiner>
           <GridDetailsConatiner>
             <GridDetailsTitle>Fastest Lap Record</GridDetailsTitle>
-            <GridDetailsStats>1.36.169</GridDetailsStats>
+            <GridDetailsStats>
+              {fastestLapTime(details.Circuit.circuitId)}
+            </GridDetailsStats>
             <h5 style={{ color: 'whitesmoke', fontWeight: '500' }}>
-              Charles Leclerc
+              {fastestLapTimeDriver(details.Circuit.circuitId)}
             </h5>
           </GridDetailsConatiner>
         </GridDetails>
@@ -249,6 +251,104 @@ const raceDistance = (circuitId) => {
       return '308.75 km';
     case 'yas_marina':
       return '305.355 km';
+  }
+};
+
+const fastestLapTime = (circuitId) => {
+  switch (circuitId) {
+    case 'bahrain':
+      return '1:31.447';
+    case 'imola':
+      return '1:15.484';
+    case 'portimao':
+      return '1:18.750';
+    case 'catalunya':
+      return '1:18.149';
+    case 'monaco':
+      return '1:12.909';
+    case 'BAK':
+      return '1:43.009 ';
+    case 'ricard':
+      return '1:32.740 ';
+    case 'red_bull_ring':
+      return '1:05.619';
+    case 'silverstone':
+      return '1:27.097 ';
+    case 'hungaroring':
+      return '1:16.627 ';
+    case 'spa':
+      return '1:46.286';
+    case 'zandvoort':
+      return 'null';
+    case 'monza':
+      return '1:21.046';
+    case 'sochi':
+      return '1:35.761 ';
+    case 'marina_bay':
+      return '1:41.905';
+    case 'suzuka':
+      return '1:30.983 ';
+    case 'americas':
+      return '1:36.169';
+    case 'rodriguez':
+      return '1:18.741';
+    case 'interlagos':
+      return '1:10.540';
+    case 'albert_park':
+      return '1:24.125';
+    case 'jeddah':
+      return 'null';
+    case 'yas_marina':
+      return '1:39.283';
+  }
+};
+
+const fastestLapTimeDriver = (circuitId) => {
+  switch (circuitId) {
+    case 'bahrain':
+      return 'Pedro de la Rosa(2005)';
+    case 'imola':
+      return 'Lewis Hamilton(2020)';
+    case 'portimao':
+      return 'Lewis Hamilton(2020)';
+    case 'catalunya':
+      return 'Max Verstappen(2021)';
+    case 'monaco':
+      return 'Lewis Hamilton (2021)';
+    case 'BAK':
+      return 'Charles Leclerc (2019)';
+    case 'ricard':
+      return 'Sebastian Vettel (2019)';
+    case 'red_bull_ring':
+      return 'Carlos Sainz (2020)';
+    case 'silverstone':
+      return 'Max Verstappen (2020)';
+    case 'hungaroring':
+      return 'Lewis Hamilton (2020)';
+    case 'spa':
+      return 'Valtteri Bottas (2018)';
+    case 'zandvoort':
+      return 'null (null)';
+    case 'monza':
+      return 'Rubens Barrichello (2004)';
+    case 'sochi':
+      return 'Lewis Hamilton (2019)';
+    case 'marina_bay':
+      return 'Kevin Magnussen (2018)';
+    case 'suzuka':
+      return 'Lewis Hamilton (2019)';
+    case 'americas':
+      return 'Charles Leclerc (2019)';
+    case 'rodriguez':
+      return 'Valtteri Bottas (2018)';
+    case 'interlagos':
+      return 'Valtteri Bottas (2018)';
+    case 'albert_park':
+      return 'Michael Schumacher (2004)';
+    case 'jeddah':
+      return 'null (null)';
+    case 'yas_marina':
+      return 'Lewis Hamilton (2019)';
   }
 };
 
