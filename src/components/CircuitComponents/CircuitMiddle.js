@@ -64,6 +64,44 @@ const firstGrandPrix = (circuitId) => {
       return '1980';
     case 'portimao':
       return '2020';
+    case 'catalunya':
+      return '1991';
+    case 'monaco':
+      return '1950';
+    case 'BAK':
+      return '2016';
+    case 'ricard':
+      return '1971';
+    case 'red_bull_ring':
+      return '1970';
+    case 'silverstone':
+      return '1950';
+    case 'hungaroring':
+      return '1986';
+    case 'spa':
+      return '1950';
+    case 'zandvoort':
+      return '1952';
+    case 'monza':
+      return '1950';
+    case 'sochi':
+      return '2014';
+    case 'marina_bay':
+      return '2008';
+    case 'suzuka':
+      return '1987';
+    case 'americas':
+      return '2012';
+    case 'rodriguez':
+      return '1963';
+    case 'interlagos':
+      return '1973';
+    case 'albert_park':
+      return '1996';
+    case 'jeddah':
+      return '2021';
+    case 'yas_marina':
+      return '2009';
   }
 };
 
@@ -75,6 +113,44 @@ const numberOfLaps = (circuitId) => {
       return '63';
     case 'portimao':
       return '66';
+    case 'catalunya':
+      return '66';
+    case 'monaco':
+      return '78';
+    case 'BAK':
+      return '51';
+    case 'ricard':
+      return '53';
+    case 'red_bull_ring':
+      return '71';
+    case 'silverstone':
+      return '52';
+    case 'hungaroring':
+      return '70';
+    case 'spa':
+      return '44';
+    case 'zandvoort':
+      return '72';
+    case 'monza':
+      return '53';
+    case 'sochi':
+      return '53';
+    case 'marina_bay':
+      return '61';
+    case 'suzuka':
+      return '53';
+    case 'americas':
+      return '56';
+    case 'rodriguez':
+      return '71';
+    case 'interlagos':
+      return '71';
+    case 'albert_park':
+      return '58';
+    case 'jeddah':
+      return '50';
+    case 'yas_marina':
+      return '55';
   }
 };
 
@@ -86,6 +162,44 @@ const circuitLength = (circuitId) => {
       return '4.909km';
     case 'portimao':
       return '4.653km';
+    case 'catalunya':
+      return '4.675km';
+    case 'monaco':
+      return '3.337 km';
+    case 'BAK':
+      return '6.003 km';
+    case 'ricard':
+      return '5.842km';
+    case 'red_bull_ring':
+      return '4.318km';
+    case 'silverstone':
+      return '5.891km';
+    case 'hungaroring':
+      return '4.381km';
+    case 'spa':
+      return '7.004km';
+    case 'zandvoort':
+      return '4.259km';
+    case 'monza':
+      return '5.793km';
+    case 'sochi':
+      return '5.848km';
+    case 'marina_bay':
+      return '5.063km';
+    case 'suzuka':
+      return '5.807km';
+    case 'americas':
+      return '5.513km';
+    case 'rodriguez':
+      return '4.304km';
+    case 'interlagos':
+      return '4.309km';
+    case 'albert_park':
+      return '5.303km';
+    case 'jeddah':
+      return '6.175km';
+    case 'yas_marina':
+      return '5.554km';
   }
 };
 
@@ -96,7 +210,45 @@ const raceDistance = (circuitId) => {
     case 'imola':
       return '309.049km';
     case 'portimao':
-      return '306.826km';
+      return '306.826 km';
+    case 'catalunya':
+      return '308.424 km';
+    case 'monaco':
+      return '260.286 km';
+    case 'BAK':
+      return '306.049 km';
+    case 'ricard':
+      return '309.69 km';
+    case 'red_bull_ring':
+      return '306.452 km';
+    case 'silverstone':
+      return '306.198 km';
+    case 'hungaroring':
+      return '306.63 km';
+    case 'spa':
+      return '308.052 km';
+    case 'zandvoort':
+      return '306.648 km';
+    case 'monza':
+      return '306.72 km';
+    case 'sochi':
+      return '309.745 km';
+    case 'marina_bay':
+      return '308.706 km';
+    case 'suzuka':
+      return '307.471 km';
+    case 'americas':
+      return '308.405 km';
+    case 'rodriguez':
+      return '305.354 km';
+    case 'interlagos':
+      return '305.909 km';
+    case 'albert_park':
+      return '307.574 km';
+    case 'jeddah':
+      return '308.75 km';
+    case 'yas_marina':
+      return '305.355 km';
   }
 };
 
@@ -125,6 +277,8 @@ const mapCountry = (country) => {
       return 'Saudi_Arabia';
     case 'Monaco':
       return 'Monoco';
+    case 'Azerbaijan':
+      return 'Baku';
     default:
       return country;
   }
