@@ -201,8 +201,9 @@ export const renderableCircuits = circuits.map((circuit) => {
         'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/abu-dhabi-flag.png.transform/2col-retina/image.png';
       newCircuit.track =
         'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Abu%20Dhabi%20carbon.png.transform/2col-retina/image.png';
-    default:
       break;
+    default:
+      return 'country';
   }
 
   return newCircuit;

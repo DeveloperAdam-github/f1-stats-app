@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import RedBull from '../images/redbull.svg';
 import Mercedes from '../images/mercedes.svg';
@@ -10,7 +10,6 @@ import Astonmartin from '../images/astonmartin.svg';
 import Haas from '../images/haas.png';
 import Williams from '../images/williams.png';
 import Alfa from '../images/alfa.svg';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const ConstructorCard = ({

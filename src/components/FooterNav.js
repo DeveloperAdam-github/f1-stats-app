@@ -6,8 +6,6 @@ import { ReactComponent as Logo } from '../images/newsicon.svg';
 import { ReactComponent as Podium } from '../images/podium.svg';
 import { ReactComponent as Helmet } from '../images/helmet.svg';
 
-const activeClassName = 'nav-item-active';
-
 const FooterNav = () => {
   return (
     <FooterNavContainer>

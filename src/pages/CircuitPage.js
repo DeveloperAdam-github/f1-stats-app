@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CircuitHeader from '../components/CircuitComponents/CircuitHeader';
+import CircuitMiddle from '../components/CircuitComponents/CircuitMiddle';
 
 const CircuitPage = (details) => {
   return (
@@ -12,6 +13,7 @@ const CircuitPage = (details) => {
       {details.location.trackDetails ? (
         <CircuitPageContainer>
           <CircuitHeader details={details.location.trackDetails} />
+          <CircuitMiddle details={details.location.trackDetails}/>
           {/* <CircuitPageHeader>
         <HeaderTitle>
         <Link to='/racecalendar'>
@@ -38,7 +40,10 @@ const CircuitPageContainer = styled.div`
   height: 91vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #0c0c12;
+  overflow: scroll;
 `;
 
 // const CircuitPageHeader = styled.div`
