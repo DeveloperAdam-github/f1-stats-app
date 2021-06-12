@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import RaceCard from '../components/RaceCard';
@@ -10,6 +10,66 @@ import { Link } from 'react-router-dom';
 const RaceCalendar = () => {
   const [trackInfo, setTrackInfo] = useState(null);
 
+  const myRef = useRef({});
+
+  const scrollToTrack = () => {
+    getNextTrackScroll();
+    console.log('clickeeedddddd');
+  };
+
+  const getNextTrackScroll = () => {
+    switch (closest) {
+      case '2021-03-28':
+        return myRef.current[0].scrollIntoView({ behavior: 'smooth' });
+      case '2021-04-18':
+        return myRef.current[1].scrollIntoView({ behavior: 'smooth' });
+      case '2021-05-02':
+        return myRef.current[2].scrollIntoView({ behavior: 'smooth' });
+      case '2021-05-09':
+        return myRef.current[3].scrollIntoView({ behavior: 'smooth' });
+      case '2021-05-23':
+        return myRef.current[4].scrollIntoView({ behavior: 'smooth' });
+      case '2021-06-06':
+        return myRef.current[5].scrollIntoView({ behavior: 'smooth' });
+      case '2021-06-20':
+        return myRef.current[6].scrollIntoView({ behavior: 'smooth' });
+      case '2021-06-27':
+        return myRef.current[7].scrollIntoView({ behavior: 'smooth' });
+      case '2021-07-04':
+        return myRef.current[8].scrollIntoView({ behavior: 'smooth' });
+      case '2021-07-18':
+        return myRef.current[9].scrollIntoView({ behavior: 'smooth' });
+      case '2021-08-01':
+        return myRef.current[10].scrollIntoView({ behavior: 'smooth' });
+      case '2021-08-29':
+        return myRef.current[11].scrollIntoView({ behavior: 'smooth' });
+      case '2021-08-29':
+        return myRef.current[12].scrollIntoView({ behavior: 'smooth' });
+      case '2021-09-12':
+        return myRef.current[13].scrollIntoView({ behavior: 'smooth' });
+      case '2021-09-26':
+        return myRef.current[14].scrollIntoView({ behavior: 'smooth' });
+      case '2021-10-01':
+        return myRef.current[15].scrollIntoView({ behavior: 'smooth' });
+      case '2021-10-10':
+        return myRef.current[16].scrollIntoView({ behavior: 'smooth' });
+      case '2021-10-24':
+        return myRef.current[17].scrollIntoView({ behavior: 'smooth' });
+      case '2021-10-31':
+        return myRef.current[18].scrollIntoView({ behavior: 'smooth' });
+      case '2021-11-05':
+        return myRef.current[19].scrollIntoView({ behavior: 'smooth' });
+      case '2021-11-21':
+        return myRef.current[20].scrollIntoView({ behavior: 'smooth' });
+      case '2021-12-05':
+        return myRef.current[21].scrollIntoView({ behavior: 'smooth' });
+      case '2021-12-12':
+        return myRef.current[22].scrollIntoView({ behavior: 'smooth' });
+      default:
+        break;
+    }
+  };
+
   useEffect(() => {
     async function getTrackData() {
       try {
@@ -17,7 +77,7 @@ const RaceCalendar = () => {
           'https://ergast.com/api/f1/current.json'
         );
         setTrackInfo(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         // Object.entries(trackInfo?.MRData?.RaceTable?.Races).forEach(
         //   ([key, value]) => {
         //     console.log(key, value.date);
@@ -34,27 +94,15 @@ const RaceCalendar = () => {
   const dates = renderableCircuits.map((circuit) => circuit.date);
 
   const todaysDate = Date.now();
-  // const dates = [
-  //   trackInfo?.MRData?.RaceTable?.Races[0]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[1]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[2]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[3]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[4]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[5]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[6]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[7]?.date,
-  //   trackInfo?.MRData?.RaceTable?.Races[8]?.date,
-  // ];
 
   const [closest] = dates.sort((a, b) => {
     const [aDate, bDate] = [a, b].map((d) =>
-      Math.abs(new Date(d) - todaysDate)
+      Math.abs(new Date(d) <= todaysDate)
     );
-    // console.log(aDate, bDate, 'the dates');
     return aDate - bDate;
   });
 
-  console.log(closest, 'closest tracks');
+  console.log(closest, 'closest track/upcoming track');
 
   const getNextTrack = () => {
     switch (closest) {
@@ -74,40 +122,61 @@ const RaceCalendar = () => {
         return 'France Grand Prix';
       case '2021-06-27':
         return 'Styria Grand Prix';
-      case ' 2021-07-04':
+      case '2021-07-04':
         return 'Austria Grand Prix';
-      case ' 2021-07-18':
+      case '2021-07-18':
         return 'Great Britain Grand Prix';
-      case ' 2021-08-01':
+      case '2021-08-01':
         return 'Hungary Grand Prix';
-      case ' 2021-08-29':
+      case '2021-08-29':
         return 'Belgium Grand Prix';
-      case ' 2021-08-29':
+      case '2021-08-29':
         return 'Netherlands Grand Prix';
-      case ' 2021-09-12':
+      case '2021-09-12':
         return 'Italy Grand Prix';
-      case ' 2021-09-26':
+      case '2021-09-26':
         return 'Russia Grand Prix';
-      case ' 2021-10-01':
+      case '2021-10-01':
         return 'Singapore Grand Prix';
-      case ' 2021-10-10':
+      case '2021-10-10':
         return 'Japan Grand Prix';
-      case ' 2021-10-24':
+      case '2021-10-24':
         return 'United States Grand Prix';
-      case ' 2021-10-31':
+      case '2021-10-31':
         return 'Mexico Grand Prix';
-      case ' 2021-11-05':
+      case '2021-11-05':
         return 'Brazilian Grand Prix';
-      case ' 2021-11-21':
+      case '2021-11-21':
         return 'Australian Grand Prix';
-      case ' 2021-12-05':
+      case '2021-12-05':
         return 'Saudi Arabia Grand Prix';
-      case ' 2021-12-12':
+      case '2021-12-12':
         return 'Abu Dhabi Grand Prix';
       default:
         break;
     }
   };
+
+  // const getNextTrackScroll = () => {
+  //   switch (closest) {
+  //     case '2021-03-28':
+  //       return [0];
+  //     case '2021-04-18':
+  //       return [1];
+  //     case '2021-05-02':
+  //       return [3];
+  //     case '2021-05-09':
+  //       return [4];
+  //     case '2021-05-23':
+  //       return [5];
+  //     case '2021-06-06':
+  //       return [6];
+  //     case '2021-06-20':
+  //       return [7];
+  //     default:
+  //       break;
+  //   }
+  // };
 
   const getFlag = () => {
     switch (closest) {
@@ -162,7 +231,7 @@ const RaceCalendar = () => {
             <CardTitle>F1 2021 Schedule</CardTitle>
             <p>2021 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR</p>
             <NextRace>
-              <Square>
+              <Square onClick={scrollToTrack}>
                 <Icon />
               </Square>
               <h4>{getNextTrack()}</h4>
@@ -188,6 +257,7 @@ const RaceCalendar = () => {
                   key={key}
                   render={renderableCircuits[key]}
                   details={trackInfo.MRData.RaceTable.Races[key]}
+                  ref={(element) => (myRef.current[key] = element)}
                 />
               ))}
 

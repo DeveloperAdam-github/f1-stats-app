@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { Link } from 'react-router-dom';
 
-const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
+const RaceCard = (
+  { date, flag, raceName, desc, track, details, render },
+  ref
+) => {
   // const getFlag = () => {
   //   switch (details.Circuit.circuitId) {
   //     case 'BAK':
@@ -27,12 +30,12 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
     //     delayChildren: '0.5',
     //   }}
     // >
-    <CardContainer>
+    <CardContainer ref={ref}>
       <Link
         to={{
-            pathname:  `/circuits`,
-            search: `${details.Circuit.circuitId}`,
-            trackDetails: details
+          pathname: `/circuit`,
+          search: `?name=${render.circuitId}&id=${render.circuitId}`,
+          renderDetails: render,
         }}
         style={{ textDecoration: 'none', color: 'whitesmoke' }}
       >
@@ -45,6 +48,7 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
           <h4>
             {details.raceName} <ChevronRightIcon style={{ color: '#730a0B' }} />{' '}
           </h4>
+          {/* <p>{render.circuitName}</p> */}
           <p>{details.Circuit.circuitName}</p>
         </CardMiddle>
         <hr />
@@ -57,7 +61,7 @@ const RaceCard = ({ date, flag, raceName, desc, track, details, render }) => {
   );
 };
 
-export default RaceCard;
+export default forwardRef(RaceCard);
 
 const CardContainer = styled.div`
   margin-top: 2.5rem;

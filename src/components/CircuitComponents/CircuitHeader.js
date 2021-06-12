@@ -3,18 +3,17 @@ import styled from 'styled-components';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { Link } from 'react-router-dom';
 
-const CircuitHeader = ({ details, match }) => {
-  console.log('Details', details);
+const CircuitHeader = ({ raceName, country }) => {
   return (
-    <CircuitPageHeader details={details}>
+    <CircuitPageHeader country={mapCountry(country)}>
       <HeaderTitle>
         <Link to='/racecalendar'>
           <Icon />
         </Link>
-        <h4>{details.raceName}</h4>
+        <h4>{raceName}</h4>
         <Flag
           src={`https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/${mapFlag(
-            details.Circuit.Location.country.toLowerCase()
+            country.toLowerCase()
           )}-flag.png.transform/1col-retina/image.png`}
         />
       </HeaderTitle>
@@ -58,12 +57,10 @@ const CircuitPageHeader = styled.div`
   max-height: 21vh;
   background-position: center center;
   background-size: cover;
-  background-image: url(${(props) =>
-    props.details.Circuit.Location.country
-      ? `https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/${mapCountry(
-          props.details.Circuit.Location.country
-        )}.jpg.transform/fullbleed-retina/image.jpg`
-      : ''});
+  background-image: ${({ country }) =>
+    country
+      ? `url(https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/${country}.jpg.transform/fullbleed-retina/image.jpg )`
+      : `url('')`};
 
   @media screen and (min-width: 1500px) {
     min-height: 20vh;

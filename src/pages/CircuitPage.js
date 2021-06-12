@@ -6,26 +6,54 @@ import styled from 'styled-components';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import CircuitHeader from '../components/CircuitComponents/CircuitHeader';
 import CircuitMiddle from '../components/CircuitComponents/CircuitMiddle';
+import { useLocation } from 'react-router';
+import { circuits } from '../circuits';
+import CircuitPodium from '../components/CircuitComponents/CircuitPodium';
 
-const CircuitPage = (details) => {
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
+const CircuitPage = (render) => {
+  console.log(circuits, 'circuits');
+  let query = useQuery();
+  const trackName = query.get('name');
+  const [trackInfo, setTrackInfo] = useState();
+  const [renderTrackInfo, setRenderTrackInfo] = useState();
+
+  // console.log('trackname', trackName);
+  // console.log('render', render);
+
+  useEffect(() => {
+    const getTrackData = async () => {
+      try {
+        const response = await axios.get(
+          `https://ergast.com/api/f1/circuits/${trackName}.json`
+        );
+        setTrackInfo(response.data.MRData.CircuitTable.Circuits?.[0]);
+        console.log(response, 'this is the response');
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    getTrackData();
+  }, [trackName]);
+
+  const { circuitName: raceName, circuitId } = trackInfo || {};
+  // console.log(trackInfo, 'trackinfo');
+  const { country } = trackInfo?.Location || {};
+
   return (
     <>
-      {details.location.trackDetails ? (
+      {trackInfo ? (
         <CircuitPageContainer>
-          <CircuitHeader details={details.location.trackDetails} />
-          <CircuitMiddle details={details.location.trackDetails}/>
-          {/* <CircuitPageHeader>
-        <HeaderTitle>
-        <Link to='/racecalendar'>
-        <Icon />
-        </Link>
-        <h1>
-        {' '}
-        <Flag src='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/azerbaijan-flag.png.transform/1col-retina/image.png' />
-        Azerbaijan
-        </h1>
-        </HeaderTitle>
-      </CircuitPageHeader> */}
+          <CircuitHeader raceName={raceName} country={country} />
+          <CircuitMiddle
+            circuitId={circuitId}
+            country={country}
+            render={render.location.renderDetails}
+          />
+          {/* <CircuitPodium /> */}
         </CircuitPageContainer>
       ) : (
         <h1>loading</h1>
