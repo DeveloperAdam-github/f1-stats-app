@@ -6,14 +6,18 @@ import { ReactComponent as Logo } from '../images/newsicon.svg';
 import { ReactComponent as Podium } from '../images/podium.svg';
 import { ReactComponent as Helmet } from '../images/helmet.svg';
 
-const FooterNav = () => {
+const FooterNav = ({ news, standings, raceCalendar }) => {
   return (
     <FooterNavContainer>
       <LinkContainer>
         <ButtonStyles>
           <Link to='/'>
             <SvgStyles>
-              <Announcement />
+              {news ? (
+                <Announcement style={{ stroke: 'rgba(115, 10, 9, 0.6)' }} />
+              ) : (
+                <Announcement />
+              )}
             </SvgStyles>
           </Link>
         </ButtonStyles>
@@ -26,7 +30,11 @@ const FooterNav = () => {
         <ButtonStyles>
           <Link to='/standings'>
             <SvgStyles>
-              <Standings />
+              {standings ? (
+                <Standings style={{ stroke: 'rgba(115, 10, 9, 0.6)' }} />
+              ) : (
+                <Standings />
+              )}
             </SvgStyles>
           </Link>
         </ButtonStyles>
@@ -39,7 +47,11 @@ const FooterNav = () => {
         <ButtonStyles>
           <Link to='/racecalendar'>
             <SvgStyles>
-              <HelmetLogo />
+              {raceCalendar ? (
+                <HelmetLogo style={{ stroke: 'rgba(115, 10, 9, 0.6)' }} />
+              ) : (
+                <HelmetLogo />
+              )}
             </SvgStyles>
           </Link>
         </ButtonStyles>

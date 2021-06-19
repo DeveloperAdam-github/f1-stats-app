@@ -9,6 +9,7 @@ import CircuitMiddle from '../components/CircuitComponents/CircuitMiddle';
 import { useLocation } from 'react-router';
 import { circuits } from '../circuits';
 import CircuitPodium from '../components/CircuitComponents/CircuitPodium';
+import FooterNav from '../components/FooterNav';
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -46,15 +47,18 @@ const CircuitPage = (render) => {
   return (
     <>
       {trackInfo ? (
-        <CircuitPageContainer>
-          <CircuitHeader raceName={raceName} country={country} />
-          <CircuitMiddle
-            circuitId={circuitId}
-            country={country}
-            render={render.location.renderDetails}
-          />
-          {/* <CircuitPodium /> */}
-        </CircuitPageContainer>
+        <>
+          <CircuitPageContainer>
+            <CircuitHeader raceName={raceName} country={country} />
+            <CircuitMiddle
+              circuitId={circuitId}
+              country={country}
+              render={render.location.renderDetails}
+            />
+            <CircuitPodium />
+          </CircuitPageContainer>
+          <FooterNav raceCalendar />
+        </>
       ) : (
         <h1>loading</h1>
       )}

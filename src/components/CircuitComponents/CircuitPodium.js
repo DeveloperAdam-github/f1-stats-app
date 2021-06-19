@@ -32,28 +32,28 @@ const CircuitPodiumContainer = styled.div`
 `;
 
 const FirstPlace = styled.div`
-  height: 140px;
-  width: 20%;
+  height: 200px;
+  width: 30%;
   background-color: red;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin: 0 5px 0 5px;
+  margin: 0 1% 0 1%;
 `;
 
 const SecondPlace = styled.div`
-  height: 130px;
-  width: 20%;
+  height: 180px;
+  width: 30%;
   background-color: red;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin: 0 5px 0 5px;
+  margin: 0 1% 0 1%;
 `;
 
 const ThirdPlace = styled.div`
-  height: 120px;
-  width: 20%;
+  height: 160px;
+  width: 30%;
   background-color: red;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin: 0 5px 0 5px;
+  margin: 0 1% 0 1%;
 `;

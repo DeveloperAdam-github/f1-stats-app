@@ -2,18 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ConstructorCard from '../components/ConstructorCard';
-import RedBull from '../images/redbull.svg';
-import Mercedes from '../images/mercedes.svg';
-import Mclaren from '../images/mclarenn.png';
-import AlphaTauri from '../images/alphatauri.png';
-import Ferrari from '../images/ferrari.svg';
-import Alpine from '../images/alpine.svg';
-import Astonmartin from '../images/astonmartin.svg';
-import Haas from '../images/haas.png';
-import Williams from '../images/williams.png';
-import Alfa from '../images/alfa.svg';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import FooterNav from '../components/FooterNav';
 
 const ConstructorsPage = () => {
   const [teamInfo, setTeamInfo] = useState(null);
@@ -35,31 +26,32 @@ const ConstructorsPage = () => {
   }, []);
 
   return (
-    <ConstructorStyles>
-      <ConstructorContainer>
-        <ConstructorHeader>
-          <ConstructorHeaderContainer>
-            <HeaderLink to='/standings'>Drivers</HeaderLink>
-            <HeaderLink1 to='/constructors'>
-              <HeaderTitle>Constructors</HeaderTitle>
-            </HeaderLink1>
-          </ConstructorHeaderContainer>
-        </ConstructorHeader>
-        {teamInfo ? (
-          <CardContainer>
-            {Object.keys(
-              teamInfo?.MRData?.StandingsTable?.StandingsLists[0]
-                ?.ConstructorStandings
-            ).map((key) => (
-              <ConstructorCard
-                key={key}
-                details={
-                  teamInfo?.MRData?.StandingsTable?.StandingsLists[0]
-                    ?.ConstructorStandings[key]
-                }
-              />
-            ))}
-            {/* <ConstructorCard
+    <>
+      <ConstructorStyles>
+        <ConstructorContainer>
+          <ConstructorHeader>
+            <ConstructorHeaderContainer>
+              <HeaderLink to='/standings'>Drivers</HeaderLink>
+              <HeaderLink1 to='/constructors'>
+                <HeaderTitle>Constructors</HeaderTitle>
+              </HeaderLink1>
+            </ConstructorHeaderContainer>
+          </ConstructorHeader>
+          {teamInfo ? (
+            <CardContainer>
+              {Object.keys(
+                teamInfo?.MRData?.StandingsTable?.StandingsLists[0]
+                  ?.ConstructorStandings
+              ).map((key) => (
+                <ConstructorCard
+                  key={key}
+                  details={
+                    teamInfo?.MRData?.StandingsTable?.StandingsLists[0]
+                      ?.ConstructorStandings[key]
+                  }
+                />
+              ))}
+              {/* <ConstructorCard
             team='redbull'
             car='https://www.formula1.com/content/dam/fom-website/teams/2021/red-bull-racing.png.transform/6col-retina/image.png'
             position='1'
@@ -168,14 +160,16 @@ const ConstructorsPage = () => {
             logo={Haas}
             teamName='Haas F1 Team'
           /> */}
-          </CardContainer>
-        ) : (
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
-            <h4 style={{ color: 'white' }}>Loading . . . </h4>
-          </motion.div>
-        )}
-      </ConstructorContainer>
-    </ConstructorStyles>
+            </CardContainer>
+          ) : (
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
+              <h4 style={{ color: 'white' }}>Loading . . . </h4>
+            </motion.div>
+          )}
+        </ConstructorContainer>
+      </ConstructorStyles>
+      <FooterNav standings />
+    </>
   );
 };
 

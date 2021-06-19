@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Timeline } from 'react-twitter-widgets';
+import FooterNav from '../components/FooterNav';
 
 const Homepage = () => {
   return (
-    <HomepageContainer>
-      {/* <Timeline
+    <>
+      <HomepageContainer>
+        {/* <Timeline
         dataSource={{
           sourceType: 'profile',
           screenName: 'F1',
@@ -15,25 +17,27 @@ const Homepage = () => {
           width: '400',
         }}
       /> */}
-      <Tweets>
-        <a
-          class='twitter-timeline'
-          href='https://twitter.com/F1?ref_src=twsrc%5Etfw'
-          style={{
-            color: 'whitesmoke',
-            fontWeight: '900',
-            fontSize: '26px',
-          }}
-        >
-          Tweets by F1
-        </a>{' '}
-        <script
-          async
-          src='https://platform.twitter.com/widgets.js'
-          charset='utf-8'
-        ></script>
-      </Tweets>
-    </HomepageContainer>
+        <Tweets>
+          <a
+            class='twitter-timeline'
+            href='https://twitter.com/F1?ref_src=twsrc%5Etfw'
+            style={{
+              color: 'whitesmoke',
+              fontWeight: '900',
+              fontSize: '26px',
+            }}
+          >
+            Tweets by F1
+          </a>{' '}
+          <script
+            async
+            src='https://platform.twitter.com/widgets.js'
+            charset='utf-8'
+          ></script>
+        </Tweets>
+      </HomepageContainer>
+      <FooterNav news />
+    </>
   );
 };
 

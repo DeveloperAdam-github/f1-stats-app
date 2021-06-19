@@ -6,6 +6,7 @@ import axios from 'axios';
 import { renderableCircuits } from '../circuits';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import FooterNav from '../components/FooterNav';
 
 const RaceCalendar = () => {
   const [trackInfo, setTrackInfo] = useState(null);
@@ -224,50 +225,51 @@ const RaceCalendar = () => {
   };
 
   return (
-    <RaceCalendarContainer>
-      {trackInfo ? (
-        <>
-          <StarterCard>
-            <CardTitle>F1 2021 Schedule</CardTitle>
-            <p>2021 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR</p>
-            <NextRace>
-              <Square onClick={scrollToTrack}>
-                <Icon />
-              </Square>
-              <h4>{getNextTrack()}</h4>
-              <Flag src={getFlag()} alt='' />
-            </NextRace>
-          </StarterCard>
-          <motion.div
-            initial={{ x: -5000 }}
-            animate={{ x: 0 }}
-            transition={{
-              type: 'spring',
-              duration: '1',
-              delay: '0.1s',
-              delayChildren: '0.5',
-            }}
-          >
-            <CardContainer>
-              {Object.keys(
-                renderableCircuits,
-                trackInfo.MRData.RaceTable.Races
-              ).map((key) => (
-                <RaceCard
-                  key={key}
-                  render={renderableCircuits[key]}
-                  details={trackInfo.MRData.RaceTable.Races[key]}
-                  ref={(element) => (myRef.current[key] = element)}
-                />
-              ))}
+    <>
+      <RaceCalendarContainer>
+        {trackInfo ? (
+          <>
+            <StarterCard>
+              <CardTitle>F1 2021 Schedule</CardTitle>
+              <p>2021 FIA FORMULA ONE WORLD CHAMPIONSHIP™ RACE CALENDAR</p>
+              <NextRace>
+                <Square onClick={scrollToTrack}>
+                  <Icon />
+                </Square>
+                <h4>{getNextTrack()}</h4>
+                <Flag src={getFlag()} alt='' />
+              </NextRace>
+            </StarterCard>
+            <motion.div
+              initial={{ x: -5000 }}
+              animate={{ x: 0 }}
+              transition={{
+                type: 'spring',
+                duration: '1',
+                delay: '0.1s',
+                delayChildren: '0.5',
+              }}
+            >
+              <CardContainer>
+                {Object.keys(
+                  renderableCircuits,
+                  trackInfo.MRData.RaceTable.Races
+                ).map((key) => (
+                  <RaceCard
+                    key={key}
+                    render={renderableCircuits[key]}
+                    details={trackInfo.MRData.RaceTable.Races[key]}
+                    ref={(element) => (myRef.current[key] = element)}
+                  />
+                ))}
 
-              {/* {Object.keys(trackInfo.MRData.RaceTable.Races).map((key) => (
+                {/* {Object.keys(trackInfo.MRData.RaceTable.Races).map((key) => (
                 <RaceCard
                 key={key}
                 details={trackInfo.MRData.RaceTable.Races[key]}
                 />
               ))} */}
-              {/* <RaceCard
+                {/* <RaceCard
           date='28th March'
           flag='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/bahrain-flag.png.transform/2col-retina/image.png'
           raceName='Bahrain'
@@ -302,17 +304,19 @@ const RaceCalendar = () => {
           desc='Formula 1 Grand Prix De Monaco 2021'
           track='https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monte%20Carlo%20carbon.png.transform/8col-retina/image.png'
         /> */}
-            </CardContainer>
-          </motion.div>
-        </>
-      ) : (
-        <LoadingDiv>
-          <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
-            <h4 style={{ color: 'white' }}>Loading . . . </h4>
-          </motion.div>
-        </LoadingDiv>
-      )}
-    </RaceCalendarContainer>
+              </CardContainer>
+            </motion.div>
+          </>
+        ) : (
+          <LoadingDiv>
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
+              <h4 style={{ color: 'white' }}>Loading . . . </h4>
+            </motion.div>
+          </LoadingDiv>
+        )}
+      </RaceCalendarContainer>
+      <FooterNav raceCalendar />
+    </>
   );
 };
 

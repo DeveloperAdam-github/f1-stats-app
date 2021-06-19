@@ -7,7 +7,7 @@ import RaceCalendar from './pages/RaceCalendar';
 import TeamPage from './pages/TeamPage';
 import CircuitPage from './pages/CircuitPage';
 
-function App() {
+function App({ news }) {
   return (
     <div className='App'>
       <Router>
@@ -19,7 +19,7 @@ function App() {
           <Route path='/team/:id' component={TeamPage} />
           <Route path='/circuit' component={CircuitPage} />
         </Switch>
-        <FooterNav />
+        {/* <FooterNav news={news} /> */}
       </Router>
     </div>
   );

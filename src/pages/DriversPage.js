@@ -4,16 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 import DriverCard from '../components/DriverCard';
 import { motion } from 'framer-motion';
-// import RedBull from '../images/redbull.svg';
-// import Mercedes from '../images/mercedes.svg';
-// import Mclaren from '../images/mclarenn.png';
-// import AlphaTauri from '../images/alphatauri.png';
-// import Ferrari from '../images/ferrari.svg';
-// import Alpine from '../images/alpine.svg';
-// import Astonmartin from '../images/astonmartin.svg';
-// import Haas from '../images/haas.png';
-// import Williams from '../images/williams.png';
-// import Alfa from '../images/alfa.svg';
+import FooterNav from '../components/FooterNav';
 
 const DriversPage = () => {
   const [driverInfo, setDriverInfo] = useState(null);
@@ -35,35 +26,36 @@ const DriversPage = () => {
   }, []);
 
   return (
-    <DriversPageStyles>
-      <DriversPageContainer>
-        <DriversPageHeader>
-          <DriversPageHeaderContainer>
-            <HeaderLink to='/standings'>
-              <HeaderTitle>Drivers</HeaderTitle>
-            </HeaderLink>
-            <HeaderLink1 to='/constructors'>
-              <HeaderTitle>Constructors</HeaderTitle>
-            </HeaderLink1>
-          </DriversPageHeaderContainer>
-        </DriversPageHeader>
-        {driverInfo ? (
-          <CardContainer>
-            {Object.keys(
-              driverInfo?.MRData?.StandingsTable?.StandingsLists[0]
-                ?.DriverStandings
-            ).map((key) => (
-              <DriverCard
-                key={key}
-                details={
-                  driverInfo?.MRData?.StandingsTable?.StandingsLists[0]
-                    ?.DriverStandings[key]
-                }
-              />
-            ))}
-            {/* <DriverCard firstName lastName driverPoints /> */}
+    <>
+      <DriversPageStyles>
+        <DriversPageContainer>
+          <DriversPageHeader>
+            <DriversPageHeaderContainer>
+              <HeaderLink to='/standings'>
+                <HeaderTitle>Drivers</HeaderTitle>
+              </HeaderLink>
+              <HeaderLink1 to='/constructors'>
+                <HeaderTitle>Constructors</HeaderTitle>
+              </HeaderLink1>
+            </DriversPageHeaderContainer>
+          </DriversPageHeader>
+          {driverInfo ? (
+            <CardContainer>
+              {Object.keys(
+                driverInfo?.MRData?.StandingsTable?.StandingsLists[0]
+                  ?.DriverStandings
+              ).map((key) => (
+                <DriverCard
+                  key={key}
+                  details={
+                    driverInfo?.MRData?.StandingsTable?.StandingsLists[0]
+                      ?.DriverStandings[key]
+                  }
+                />
+              ))}
+              {/* <DriverCard firstName lastName driverPoints /> */}
 
-            {/* <DriverCard
+              {/* <DriverCard
             firstName={
               driverInfo?.MRData?.StandingsTable?.StandingsLists[0]
                 ?.DriverStandings[0]?.Driver?.givenName
@@ -478,16 +470,21 @@ const DriversPage = () => {
             }
             teamLogo={Williams}
           /> */}
-          </CardContainer>
-        ) : (
-          <LoadingDiv>
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 2 }}>
-              <h4 style={{ color: 'white' }}>Loading . . . </h4>
-            </motion.div>
-          </LoadingDiv>
-        )}
-      </DriversPageContainer>
-    </DriversPageStyles>
+            </CardContainer>
+          ) : (
+            <LoadingDiv>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2 }}
+              >
+                <h4 style={{ color: 'white' }}>Loading . . . </h4>
+              </motion.div>
+            </LoadingDiv>
+          )}
+        </DriversPageContainer>
+      </DriversPageStyles>
+      <FooterNav standings />
+    </>
   );
 };
 
