@@ -55,7 +55,7 @@ const CircuitPage = (render) => {
               country={country}
               render={render.location.renderDetails}
             />
-            <CircuitPodium />
+            {/* <CircuitPodium /> */}
           </CircuitPageContainer>
           <FooterNav raceCalendar />
         </>
