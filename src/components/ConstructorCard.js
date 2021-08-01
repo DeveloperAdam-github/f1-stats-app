@@ -300,4 +300,8 @@ const TeamCarContainer = styled.div`
 const TeamCar = styled.img`
   width: 80%;
   grid-row-start: 2;
+
+  @media screen and (min-width: 1000px) {
+    max-width: 400px;
+  }
 `;
