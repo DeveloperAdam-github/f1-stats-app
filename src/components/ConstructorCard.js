@@ -302,6 +302,6 @@ const TeamCar = styled.img`
   grid-row-start: 2;
 
   @media screen and (min-width: 1000px) {
-    max-width: 400px;
+    max-width: 350px;
   }
 `;
